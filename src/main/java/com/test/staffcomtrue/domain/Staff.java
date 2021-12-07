@@ -2,17 +2,17 @@ package com.test.staffcomtrue.domain;
 
 public class Staff {
 
-    private int staffCode;
+    private String staffCode;
     private String staffName;
     private String staffGrade;
     private String staffEmail;
     private String staffPhone;
 
-    public int getStaffCode() {
+    public String getStaffCode() {
         return staffCode;
     }
 
-    public void setStaffCode(int staffCode) {
+    public void setStaffCode(String staffCode) {
         this.staffCode = staffCode;
     }
 

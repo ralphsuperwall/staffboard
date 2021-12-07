@@ -10,8 +10,9 @@ import java.util.Map;
 public interface StaffMapper {
 
     int enrollStaff(Staff staff);
+    int modifyStaff(Staff staff);
     List<Staff> staffList();
-    List<Staff> targetStaff(int staffCode);
+    List<Staff> targetStaff(String staffCode);
     List<Staff> getStaffInfo(Map<String, Object> search);
-    int deleteStaff(int staffCode);
+    int deleteStaff(String staffCode);
 }

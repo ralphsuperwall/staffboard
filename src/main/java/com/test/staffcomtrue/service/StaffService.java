@@ -5,6 +5,7 @@ import com.test.staffcomtrue.mapper.StaffMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -22,11 +23,15 @@ public class StaffService {
         return staffMapper.enrollStaff(staff);
     }
 
-    public int deleteStaff(int staffCode){
+    public int modifyStaff(Staff staff){
+        return staffMapper.modifyStaff(staff);
+    }
+
+    public int deleteStaff(String staffCode){
         return staffMapper.deleteStaff(staffCode);
     }
 
-    public List<Staff> targetStaff(int staffCode){
+    public List<Staff> targetStaff(String staffCode){
         List<Staff> targetStaff = staffMapper.targetStaff(staffCode);
         return targetStaff;
     }
@@ -34,6 +39,16 @@ public class StaffService {
     public List<Staff> staffList(){
         List<Staff> staffList = staffMapper.staffList();
         return staffList;
+    }
+
+    public List<String> getAllStaffCode(){
+        List<Staff> staffList = staffMapper.staffList();
+        ArrayList<String> allStaffCode = new ArrayList<String>();
+        for(int i = 0; i < staffList.size(); i++){
+            Staff staff = staffList.get(i);
+            allStaffCode.add(staff.getStaffCode());
+        }
+        return allStaffCode;
     }
 
     public List<Staff> getStaffInfo(Map<String, Object> search){

@@ -20,7 +20,7 @@
              staff_email,
              staff_phone)
         VALUES
-            ((SELECT code FROM (SELECT LPAD(COUNT(*)+1,3,'0') as code FROM staff) tmp ),
+            ((SELECT LPAD(COUNT(*)+1,3,'0') FROM staff tmp),
              #{staffName},
              #{staffGrade},
              #{staffEmail},
@@ -38,7 +38,7 @@
             staff;
     </select>
 
-    <select id="targetStaff" parameterType="int" resultMap="staffList">
+    <select id="targetStaff" parameterType="String" resultMap="staffList">
         SELECT
             staff_code,
             staff_name,
@@ -51,7 +51,7 @@
             staff_code=#{staffCode};
     </select>
 
-    <delete id="deleteStaff" parameterType="int">
+    <delete id="deleteStaff" parameterType="String">
         DELETE
         FROM
             staff
@@ -74,4 +74,20 @@
             </if>
         </trim>
     </select>
+
+    <insert id="modifyStaff" parameterType="Staff">
+        INSERT INTO staff
+            (staff_code,
+             staff_name,
+             staff_grade,
+             staff_email,
+             staff_phone)
+        VALUES
+            (#{staffCode},
+             #{staffName},
+             #{staffGrade},
+             #{staffEmail},
+             #{staffPhone});
+    </insert>
+
 </mapper>
