@@ -1,0 +1,95 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="@{layout/layout}">
+
+<!-- contents layout:fragment 정의 -->
+<th:block layout:fragment="customContents">
+
+  <div class="alert alert-info" role="alert">
+    사원 등록
+  </div>
+
+  <div>
+    등록할 사원의 정보를 입력하세요.
+  </div>
+
+  <form th:action="@{enroll/staff}" method="post" onsubmit="return staffEnroll();">
+    <div class="input-group mb-3">
+      <span class="input-group-text">이름</span>
+      <input type="text" class="form-control" id="staffName" name="staffName" placeholder="이름을 입력하세요">
+    </div>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text">직급</span>
+      <input type="text" class="form-control" id="staffGrade" name="staffGrade" placeholder="직급을 입력하세요">
+    </div>
+
+    <label for="staffEmail" class="form-label">이메일을 입력하세요</label>
+    <div class="input-group mb-3">
+      <span class="input-group-text">example@comtrue.com</span>
+      <input type="text" class="form-control" id="staffEmail" name="staffEmail">
+    </div>
+
+    <label for="staffPhone" class="form-label">전화번호를 입력하세요</label>
+    <div class="input-group mb-3">
+      <span class="input-group-text">000-0000-0000</span>
+      <input type="text" class="form-control" id="staffPhone" name="staffPhone">
+    </div>
+
+    <button type="submit" class="btn btn-primary">등록하기</button>
+  </form>
+
+  <script>
+    $(function() {
+      var staffEmail = $('#staffEmail');
+      var staffPhone = $('#staffPhone');
+      var emailCheck = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+      var phoneCheck = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
+
+        staffEmail.change(function () {
+          var emailCheckTarget = staffEmail.val();
+          if (emailCheck.test(emailCheckTarget) == false) {
+            alert("유효한 이메일 주소를 입력하세요");
+            staffEmail.val('');
+            return;
+          }
+        });
+
+        staffPhone.change(function () {
+          var phoneCheckTarget = staffPhone.val();
+          if (phoneCheck.test(phoneCheckTarget) == false) {
+            alert("유효한 휴대폰 번호를 입력하세요");
+            staffPhone.val('');
+            return;
+          }
+        });
+
+    });
+
+    function staffEnroll() {
+      var staffName = $('#staffEmail');
+      var staffGrade = $('#staffGrade');
+      var staffEmail = $('#staffEmail');
+      var staffPhone = $('#staffPhone');
+
+      if(staffName.value == '') {
+        alert("사원명이 입력되지 않았습니다.");
+        return false;
+      }else if(staffGrade.value == '') {
+        alert("사원 직급이 입력되지 않았습니다.");
+        return false;
+      }else if(staffEmail.value == '') {
+        alert("이메일이 입력되지 않았습니다.");
+        return false;
+      }else if(staffPhone.value == '') {
+        alert("전화번호가 입력되지 않았습니다.");
+        return false;
+      }else{
+        return true;
+      }
+    }
+  </script>
+
+</th:block>
+</html>
