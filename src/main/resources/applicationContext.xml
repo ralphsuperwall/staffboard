@@ -11,33 +11,19 @@
         </property>
         <property name="durability" value="true"/>
     </bean>
-   <!-- <bean id="sendJob" class="com.test.staffcomtrue.email.SendJob"/>-->
-    <!--<bean id="staffEmailSendJob"
-          class = "org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
-        <property name="targetObject" ref="helloWorldTask"/>
-        <property name="targetMethod" value="sendJob"/>
-    </bean>-->
-    <!--<bean id="simpleTrigger"
-          class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
-        <property name="jobDetail" ref="staffEmailSendJob" />
-        <property name="repeatInterval" value="5000" />
-        <property name="startDelay" value="1000" />
-    </bean>-->
     <bean id="cronTrigger"
           class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail" ref="emailSendJob" />
-        <property name="cronExpression" value="*/1 * * * * ?"/>
+        <property name="cronExpression" value="0 0 12 * * ?"/>
     </bean>
     <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
         <property name="jobDetails">
             <list>
-                <!--<ref bean="staffEmailSendJob" />-->
                 <ref bean="emailSendJob" />
             </list>
         </property>
         <property name="triggers">
             <list>
-               <!-- <ref bean="simpleTrigger" />-->
                 <ref bean="cronTrigger" />
             </list>
         </property>

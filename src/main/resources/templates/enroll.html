@@ -69,21 +69,21 @@
     });
 
     function staffEnroll() {
-      var staffName = $('#staffEmail');
-      var staffGrade = $('#staffGrade');
-      var staffEmail = $('#staffEmail');
-      var staffPhone = $('#staffPhone');
+      var staffEnrollName = $('#staffName');
+      var staffEnrollGrade = $('#staffGrade');
+      var staffEnrollEmail = $('#staffEmail');
+      var staffEnrollPhone = $('#staffPhone');
 
-      if(staffName.value == '') {
+      if(staffEnrollName.val() == '') {
         alert("사원명이 입력되지 않았습니다.");
         return false;
-      }else if(staffGrade.value == '') {
+      }else if(staffEnrollGrade.val() == '') {
         alert("사원 직급이 입력되지 않았습니다.");
         return false;
-      }else if(staffEmail.value == '') {
+      }else if(staffEnrollEmail.val() == '') {
         alert("이메일이 입력되지 않았습니다.");
         return false;
-      }else if(staffPhone.value == '') {
+      }else if(staffEnrollPhone.val() == '') {
         alert("전화번호가 입력되지 않았습니다.");
         return false;
       }else{

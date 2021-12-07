@@ -35,8 +35,8 @@ public class EmailConfig {
             helper.setText(String.format(
                     simpleMailMessage.getText(), dear, content));
 
-            /*FileSystemResource file = new FileSystemResource("C:\\staffList.xlsx");
-            helper.addAttachment(file.getFilename(), file);*/
+            FileSystemResource file = new FileSystemResource("C:\\staffList.xlsx");
+            helper.addAttachment(file.getFilename(), file);
 
         }catch (MessagingException e) {
             throw new MailParseException(e);

@@ -76,6 +76,18 @@
     </select>
 
     <insert id="modifyStaff" parameterType="Staff">
+        UPDATE staff
+        SET
+            staff_code=#{staffCode},
+            staff_name=#{staffName},
+            staff_grade=#{staffGrade},
+            staff_email=#{staffEmail},
+            staff_phone=#{staffPhone}
+        WHERE
+            staff_code=#{staffCode};
+    </insert>
+
+    <insert id="modifyStaffCode" parameterType="Staff">
         INSERT INTO staff
             (staff_code,
              staff_name,

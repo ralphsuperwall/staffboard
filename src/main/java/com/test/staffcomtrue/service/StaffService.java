@@ -27,6 +27,10 @@ public class StaffService {
         return staffMapper.modifyStaff(staff);
     }
 
+    public int modifyStaffCode(Staff staff){
+        return staffMapper.modifyStaffCode(staff);
+    }
+
     public int deleteStaff(String staffCode){
         return staffMapper.deleteStaff(staffCode);
     }

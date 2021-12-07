@@ -46,16 +46,28 @@
         </tbody>
     </table>
     <form th:action="@{/staffSearch}" method="get">
-        <select name = "searchKey">
-            <option value="staffCode">사원코드</option>
-            <option value="staffName">이름</option>
-            <option value="staffGrade">직급</option>
-            <option value="staffEmail">이메일</option>
-            <option value="staffPhone">전화번호</option>
-        </select>
-        <input type="text" name = "searchValue">
-        <button type="submit" class="btn btn-primary btn-sm">검색</button>
-        <button type="button" onclick="location.href='/'" class="btn btn-link">검색 결과 초기화</button>
+        <div class="container-fluid">
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="inputGroupSelect01">검색</label>
+                <select class="form-select" id="inputGroupSelect01" name="searchKey">
+                    <option selected>항목 선택</option>
+                    <option value="staffCode">사원코드</option>
+                    <option value="staffName">이름</option>
+                    <option value="staffGrade">직급</option>
+                    <option value="staffEmail">이메일</option>
+                    <option value="staffPhone">전화번호</option>
+                </select>
+            </div>
+            <div class="row">
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" name="searchValue" placeholder="검색할 내용 입력">
+                </div>
+                <div class="col-sm-5">
+                    <button type="submit" class="btn btn-primary btn-sm">검색</button>
+                    <button type="button" onclick="location.href='/'" class="btn btn-link">검색 결과 초기화</button>
+                </div>
+            </div>
+        </div>
     </form>
 
 </th:block>

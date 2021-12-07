@@ -29,26 +29,25 @@ public class StaffController {
     @GetMapping("/modify/{staffCode}")
     public String modify(@PathVariable String staffCode, Model model) {
         List<Staff> targetStaff = staffService.targetStaff(staffCode);
+        List<String> allStaffCode = staffService.getAllStaffCode();
+        String targetPrimaryCode = staffCode;
         model.addAttribute("targetStaff", targetStaff);
+        model.addAttribute("allStaffCode", allStaffCode);
+        model.addAttribute("targetPrimaryCode", targetPrimaryCode);
         staffService.deleteStaff(staffCode);
         return "/modify";
     }
 
     @PostMapping("/modify/target/staff")
     public String modifyStaff(Staff staff){
-        staffService.modifyStaff(staff);
-        return "redirect:/enroll";
-    }
-
-    @GetMapping(value = "/modify/staff/code", produces = "application/json")
-    @ResponseBody
-    public boolean staffCodeCheck(@RequestParam("staffCode") String staffCode) {
         List<String> allStaffCode = staffService.getAllStaffCode();
-        if(allStaffCode.contains(staffCode)){
-            return true;
+        String staffModifyCode = staff.getStaffCode();
+        if(allStaffCode.contains(staffModifyCode)){
+            staffService.modifyStaff(staff);
         }else{
-            return false;
+            staffService.modifyStaffCode(staff);
         }
+        return "redirect:/";
     }
 
     @GetMapping("/staff/{staffCode}")

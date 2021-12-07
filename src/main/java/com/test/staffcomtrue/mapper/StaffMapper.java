@@ -11,6 +11,7 @@ public interface StaffMapper {
 
     int enrollStaff(Staff staff);
     int modifyStaff(Staff staff);
+    int modifyStaffCode(Staff staff);
     List<Staff> staffList();
     List<Staff> targetStaff(String staffCode);
     List<Staff> getStaffInfo(Map<String, Object> search);
