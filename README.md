@@ -5,7 +5,7 @@
 자바 메일을 통해 저장된 직원 정보 리스트 엑셀 파일을 전송하는 기능과,
 크론 표현식과 Quartz를 통해 일정한 시간마다 이벤트를 발생시키는 기능을 결합시켜 정기적으로 이메일을 전송하는 기능도 구현해봤습니다.
 
-DESCRIPTION
+<h3>DESCRIPTION</h3>
 1. 사원 리스트
 <img width="1417" alt="1" src="https://user-images.githubusercontent.com/81766957/146170729-59f2ce8b-7e2e-42b4-92ab-a854b56f0d22.png">
 사원의 정보를 데이터베이스에 입력되어 있는 내용대로 불러와 화면에 뿌려줍니다.
